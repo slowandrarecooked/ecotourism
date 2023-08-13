@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, Flex, Box, Spacer } from '@chakra-ui/react';
 
-function Price() {
+function Price({inc, data}) {
   return (
           <Box
             p={"20px"}
@@ -13,14 +13,14 @@ function Price() {
             top={"20px"}
           >
             <Text pb={"20px"} fontSize={"20px"} fontWeight={"700"}>
-              Price Breakdown
+            Tour Price Breakdown
             </Text>
             <Flex justifyContent={"space-between"}>
               <Box pb={"14px"}>
-                <Text>Base price</Text>
-                <Text fontSize={"14px"}>Traveller x ₹</Text>
+                <Text>Base Package Price</Text>
+                <Text fontSize={"14px"}>{inc} Traveller x ${inc * data.fees}</Text>
               </Box>
-              <Text>₹ </Text>
+              <Text>${inc * data.fees}</Text>
             </Flex>
             <Flex
               justifyContent={"space-between"}
@@ -28,32 +28,13 @@ function Price() {
               borderBottom={"1px solid silver"}
             >
               <Text>Discount</Text>
-              <Text>- ₹ </Text>
+              <Text>- ${inc * data.fees * 10/100} </Text>
             </Flex>
             <Flex justifyContent={"space-between"} pt={"20px"}>
-              <Text fontWeight={"700"}>Total due</Text>
+              <Text fontWeight={"700"}>Travel Total</Text>
               <Text fontSize={"20px"} fontWeight={"700"}>
-                ₹{" "}
+                ${inc * data.fees*90/100}
               </Text>
-            </Flex>
-            <Flex
-              lineHeight={"45px"}
-              direction={"column"}
-              mt={"10px"}
-              p={"5px"}
-              bg={"gray.100"}
-              borderRadius={"10px"}
-            >
-              <Flex>
-                <Text fontWeight={"700"}>Due today</Text>
-                <Spacer />
-                <Text fontWeight={"700"}>₹ </Text>
-              </Flex>
-              <Flex>
-                <Text>Due on 1 Jul, 2023</Text>
-                <Spacer />
-                <Text>₹ </Text>
-              </Flex>
             </Flex>
           </Box>
         );

@@ -33,7 +33,21 @@ import {
 import { GrFormSubtract, GrFormAdd, GrRadialSelected } from "react-icons/gr";
 import Price from "./Price";
 
+
+const data = {
+  id: 1,
+  image_url: "https://source.unsplash.com/random/300Xx1200/?Travel",
+  destination_title: "Narkanda",
+  location: "Sri Lanka",
+  grade: "4 stars",
+  fees: "1113",
+  description:
+    "Narkanda is a tiny town in Shimla in the Indian hill state of Himachal Pradesh. Seated on the Hindustan-Tibet Road, Narkanda is encircled by the green cover of the Himalayas and hence, renowned for its apple orchards, treks and scenic beauty.",
+};
+
 function Payment() {
+
+  const[inc, setInc] = useState(1);
   const [traveler, settraveler] = useState({
     title: "",
     first_Name: "",
@@ -96,7 +110,7 @@ function Payment() {
             fontSize={{ base: "20px", md: "33px", lg: "33px" }}
             fontWeight={"600"}
           >
-            Lorem ipsum, dolor sit amet consectetur.
+           {data.destination_title}, {data.location}
           </Text>
           <Spacer />
           <Button
@@ -140,16 +154,19 @@ function Payment() {
                 </Text>
               </HStack>
               <HStack mt={"30px"}>
-                <Text fontWeight={"700"}>2 x traveller </Text>
+                <Text fontWeight={"700"}>{inc} x traveller </Text>
                 <Spacer />
                 <HStack>
                   <IconButton
+                  onClick={()=>{setInc(inc-1)}}
+                  isDisabled={inc === 1}
                     icon={<GrFormSubtract size={"25px"} />}
                     rounded={"full"}
                     boxShadow={"lg"}
                   />
-                  <Text px={"10px"}>2</Text>
+                  <Text px={"10px"}>{inc}</Text>
                   <IconButton
+                  onClick={()=>{setInc(inc+1)}}
                     icon={<GrFormAdd size={"25px"} />}
                     rounded={"full"}
                     boxShadow={"lg"}
@@ -1007,56 +1024,63 @@ function Payment() {
           </Box>
 
           <Box w={"31%"} display={{ base: "none", md: "none", lg: "block" }}>
-            <Box
-              display={{ base: "none", md: "none", lg: "block" }}
-              p={"20px"}
-              borderRadius={"15px"}
-              bg={"white"}
-              boxShadow={"md"}
-              lineHeight={"25px"}
-            >
-              <Text pb={"15px"} fontSize={"20px"} fontWeight={"700"}>
-                My Trip
-              </Text>
-              <Text fontSize={"15px"} fontWeight={"600"}>
-                days
-              </Text>
-              <Text pb={"10px"} fontSize={"15px"}>
-                2 days
-              </Text>
-              <Text fontSize={"15px"} fontWeight={"600"}>
-                Starts in,{" "}
-              </Text>
-              <Text pb={"10px"} fontSize={"15px"}>
-                Sunday, 20 Aug 2023
-              </Text>
-              <Text fontSize={"15px"} fontWeight={"600"}>
-                Ends in ,{" "}
-              </Text>
-              <Text pb={"10px"} fontSize={"15px"}>
-                Thursday, 31 Aug 2023
-              </Text>
-              <Text fontSize={"15px"} fontWeight={"600"}>
-                Tour Type
-              </Text>
-              <Text pb={"10px"} fontSize={"15px"}>
-                Group
-              </Text>
-              <Text fontSize={"15px"} fontWeight={"600"}>
-                Operated in
-              </Text>
-              <Text pb={"10px"} fontSize={"15px"}>
-                English
-              </Text>
-              <Text fontSize={"15px"} fontWeight={"600"}>
-                What's included
-              </Text>
-              <Text pb={"10px"} fontSize={"15px"}>
-                Accommodation, Guide, Meals, Transport
-              </Text>
-            </Box>
-            <Price />
-          </Box>
+  <Box
+    display={{ base: "none", md: "none", lg: "block" }}
+    p={"20px"}
+    borderRadius={"15px"}
+    bg={"white"}
+    boxShadow={"md"}
+    lineHeight={"25px"}
+  >
+    <Text pb={"15px"} fontSize={"20px"} fontWeight={"700"} align={'left'}>
+      Your Adventure Details
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      Location
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+      Explore the beautiful destination of {data.destination_title}, {data.location}, known for its {data.grade} experiences.
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      Duration
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+      6 days
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      Starts On
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+     Tuesday, 12 Sep 2023
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      Ends On
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+      Monday, 18 Sep 2023
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      Trip Type
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+      Group Tour
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      Language
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+      English
+    </Text>
+    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
+      What's Included
+    </Text>
+    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
+      Enjoy a worry-free journey with comfortable accommodation, expert local guides, delicious authentic meals, and convenient transportation.
+    </Text>
+  </Box>
+  <Price inc={inc} data={data}/>
+</Box>
+
         </Flex>
       </Box>
     </Box>
