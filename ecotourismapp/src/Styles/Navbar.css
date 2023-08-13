@@ -31,7 +31,9 @@ nav a {
 }
 
 nav a:hover {
-	color: var(--secondaryColor);
+	color: black;
+
+	transition: 0.5s ease-in-out;
 }
 
 header .nav-btn {
@@ -58,6 +60,11 @@ nav {
     padding: 15px;
     border-radius: 20px;
     border:none;
+}
+.book-btn:hover{
+	cursor: pointer;
+	transition:border 0.5s ease-in-out;
+	border:1px solid white;
 }
 @media only screen and (max-width: 1024px) {
 	header .nav-btn {

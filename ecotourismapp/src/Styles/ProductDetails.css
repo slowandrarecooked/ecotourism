@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@600&display=swap');
+body{
+    font-family: 'Urbanist', sans-serif;
+}
+.main{
+    display: flex;
+}
+.main>div{
+    width: 50%;
+}
+.mainImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#7DBBA9;
+    
+}
+
+.mainImage img{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width:100%;
+    border-radius:10px;
+
+}
+.mainDesc{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding:20px;
+    background-color: #7DBBA9;
+    color: white;
+}
+.mainDesc button{
+    border: none;
+    background-color: #FACE55;
+    color: black;
+    font-family: 'Urbanist', sans-serif;
+    padding: 10px;
+    width: 100%;
+    font-size:large;
+}
+.mainDesc button:hover{
+    transition: border 0.5s ease-in-out;
+    cursor: pointer;
+    border: 1px solid white;
+
+}
+.thingstodo{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.thingstodo>div{
+    border: 1px solid white
+}
