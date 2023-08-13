@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+
+.chakra-image:hover {
+  transform: scale(1.05);
+}
+.content-box {
+  max-height: 70px; /* Set the desired height before truncating */
+  overflow: hidden;
+  position: relative;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
