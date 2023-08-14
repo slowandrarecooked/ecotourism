@@ -1,6 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { ModalBody, ModalContent, ModalOverlay, useDisclosure, useToast } from "@chakra-ui/react";
+import {
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import {
   Box,
   Flex,
@@ -20,7 +26,7 @@ import {
   Select,
   Modal,
   PinInput,
-  PinInputField
+  PinInputField,
 } from "@chakra-ui/react";
 
 import {
@@ -28,11 +34,11 @@ import {
   BsFill3SquareFill,
   BsFill4SquareFill,
   BsFillInfoCircleFill,
-  BsFill2SquareFill
+  BsFill2SquareFill,
 } from "react-icons/bs";
 import { GrFormSubtract, GrFormAdd, GrRadialSelected } from "react-icons/gr";
-import Price from "./Price";
-
+import Price from "../Price";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const data = {
   id: 1,
@@ -45,9 +51,10 @@ const data = {
     "Narkanda is a tiny town in Shimla in the Indian hill state of Himachal Pradesh. Seated on the Hindustan-Tibet Road, Narkanda is encircled by the green cover of the Himalayas and hence, renowned for its apple orchards, treks and scenic beauty.",
 };
 
-function Payment() {
 
-  const[inc, setInc] = useState(1);
+function Payment() {
+  const navigate = useNavigate();
+  const [inc, setInc] = useState(1);
   const [traveler, settraveler] = useState({
     title: "",
     first_Name: "",
@@ -66,15 +73,15 @@ function Payment() {
   });
 
   const [pin, setpin] = useState({
-    first: '',
-    sec: '',
-    third: '',
-    fourth: ''
-  })
+    first: "",
+    sec: "",
+    third: "",
+    fourth: "",
+  });
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [check, setcheck]=useState(false)
-  const toast = useToast()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [check, setcheck] = useState(false);
+  const toast = useToast();
 
   const handleInputChange = (e) => {
     settraveler({ ...traveler, [e.target.name]: e.target.value });
@@ -82,25 +89,41 @@ function Payment() {
 
   const getData = () => {
     console.log(traveler);
-    if(!traveler.first_Name || !traveler.last_Name || !traveler.title || !traveler.email || !traveler.phone || !traveler.day || !traveler.month || !traveler.year || !traveler.gender || !traveler.nationality || !traveler.c_holder || !traveler.c_number || !traveler.exp_day || !traveler.cvv){
+    
+    if (
+      !traveler.first_Name ||
+      !traveler.last_Name ||
+      !traveler.title ||
+      !traveler.email ||
+      !traveler.phone ||
+      !traveler.day ||
+      !traveler.month ||
+      !traveler.year ||
+      !traveler.gender ||
+      !traveler.nationality ||
+      !traveler.c_holder ||
+      !traveler.c_number ||
+      !traveler.exp_day ||
+      !traveler.cvv
+    ) {
       toast({
-        title: 'Please fill all details',
-        status: 'warning',
-        position: 'top',
+        title: "Please fill all details",
+        status: "warning",
+        position: "top",
         duration: 3000,
         isClosable: true,
       });
-  }else{
-    onOpen();
-    toast({
-      description: "Your OTP is 1234",
-      status: 'success',
-      position: 'top',
-      duration: 3000,
-      isClosable: true,
-    });
-  }
-}
+    } else {
+      onOpen();
+      toast({
+        description: "Your OTP is 4567",
+        status: "success",
+        position: "top",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Box minH={"100vh"} bg={"gray.100"} color={"blackAlpha.800"}>
@@ -110,7 +133,7 @@ function Payment() {
             fontSize={{ base: "20px", md: "33px", lg: "33px" }}
             fontWeight={"600"}
           >
-           {data.destination_title}, {data.location}
+            {data.destination_title}, {data.location}
           </Text>
           <Spacer />
           <Button
@@ -158,15 +181,19 @@ function Payment() {
                 <Spacer />
                 <HStack>
                   <IconButton
-                  onClick={()=>{setInc(inc-1)}}
-                  isDisabled={inc === 1}
+                    onClick={() => {
+                      setInc(inc - 1);
+                    }}
+                    isDisabled={inc === 1}
                     icon={<GrFormSubtract size={"25px"} />}
                     rounded={"full"}
                     boxShadow={"lg"}
                   />
                   <Text px={"10px"}>{inc}</Text>
                   <IconButton
-                  onClick={()=>{setInc(inc+1)}}
+                    onClick={() => {
+                      setInc(inc + 1);
+                    }}
                     icon={<GrFormAdd size={"25px"} />}
                     rounded={"full"}
                     boxShadow={"lg"}
@@ -292,6 +319,7 @@ function Payment() {
                     size={"lg"}
                     border={"1px solid silver"}
                     type="email"
+              
                   />
                 </VStack>
 
@@ -317,6 +345,7 @@ function Payment() {
                     border={"1px solid silver"}
                     type="tel"
                     placeholder="e.g. +91 9778556788"
+                    
                   />
                 </VStack>
 
@@ -913,6 +942,7 @@ function Payment() {
                         </label>
                         <Input
                           name="cvv"
+                          type="password"
                           onChange={handleInputChange}
                           w={"100%"}
                           size="lg"
@@ -926,7 +956,12 @@ function Payment() {
 
                 <Box mt={"20px"}>
                   <Flex>
-                    <Checkbox size="md" onChange={()=>{setcheck(!check)}}></Checkbox>
+                    <Checkbox
+                      size="md"
+                      onChange={() => {
+                        setcheck(!check);
+                      }}
+                    ></Checkbox>
                     <Text
                       pl={"15px"}
                       mt={"45px"}
@@ -953,7 +988,6 @@ function Payment() {
                 </Box>
 
                 <Button
-                
                   onClick={getData}
                   w={"100%"}
                   colorScheme="none"
@@ -965,58 +999,95 @@ function Payment() {
                   Book Now
                 </Button>
                 <Modal isOpen={isOpen}>
-                <ModalOverlay>
-                  <ModalContent>
-                  <ModalBody>
-                  <VStack>
-                  <Text fontSize={'25px'} fontWeight={'600'}>OTP Verification</Text>
-                        <Text fontSize={'15px'}>Thank You for booking on Adventour.</Text>
-                        <Text fontSize={'15px'} pb={'20px'}>Enter the OTP shared with you.</Text>
-                        <HStack mt={3} mx={3} >
-                          <PinInput>
-                            <PinInputField onChange={(e) => { setpin({ ...pin, first: e.target.value }) }} />
-                            <PinInputField onChange={(e) => { setpin({ ...pin, sec: e.target.value }) }} />
-                            <PinInputField onChange={(e) => { setpin({ ...pin, third: e.target.value }) }} />
-                            <PinInputField onChange={(e) => { setpin({ ...pin, fourth: e.target.value }) }} />
-                          </PinInput>
-                        </HStack>
-                        <HStack>
-                          <Text fontSize={'12px'} pt={'15px'} >Not received OTP, Click here to </Text>
-                          <Text onClick={() => {
+                  <ModalOverlay>
+                    <ModalContent>
+                      <ModalBody>
+                        <VStack>
+                          <Text fontSize={"25px"} fontWeight={"600"}>
+                            OTP Verification
+                          </Text>
+                          <Text fontSize={"15px"}>
+                          Thank you for choosing Adventour! Your adventure awaits.
+                          </Text>
+                          <Text fontSize={"15px"} pb={"20px"}>
+                          Please enter the One-Time Password (OTP) you received.
+                          </Text>
+                          <HStack mt={3} mx={3}>
+                            <PinInput>
+                              <PinInputField
+                                onChange={(e) => {
+                                  setpin({ ...pin, first: e.target.value });
+                                }}
+                              />
+                              <PinInputField
+                                onChange={(e) => {
+                                  setpin({ ...pin, sec: e.target.value });
+                                }}
+                              />
+                              <PinInputField
+                                onChange={(e) => {
+                                  setpin({ ...pin, third: e.target.value });
+                                }}
+                              />
+                              <PinInputField
+                                onChange={(e) => {
+                                  setpin({ ...pin, fourth: e.target.value });
+                                }}
+                              />
+                            </PinInput>
+                          </HStack>
+                          <HStack>
+                            <Text fontSize={"12px"} pt={"15px"}>
+                            Haven't received the OTP yet? Click here to{" "}
+                            </Text>
+                            <Text
+                              onClick={() => {
+                                toast({
+                                  description: "Your OTP is 4567",
+                                  status: "warning",
+                                  position: "top",
+                                  duration: 3000,
+                                  isClosable: true,
+                                });
+                              }}
+                              color={"blue.400"}
+                              fontWeight={"500"}
+                              fontSize={"12px"}
+                              pt={"15px"}
+                              cursor={"pointer"}
+                            >
+                              RESEND
+                            </Text>
+                          </HStack>
+                        </VStack>
+                      </ModalBody>
+                      <Button
+                        colorScheme="blue"
+                        m={5}
+                        onClick={() => {
+                          onClose();
+                          if (
+                            pin.first == 4 &&
+                            pin.sec == 5 &&
+                            pin.third == 6 &&
+                            pin.fourth == 7
+                          ) {
+                            navigate('/success')
+                          } else {
                             toast({
-                              description: "Your OTP is 1234",
-                              status: 'warning',
-                              position: 'top',
+                              description: "Payment failed",
+                              status: "error",
+                              position: "top",
                               duration: 3000,
                               isClosable: true,
                             });
-
-                          }} color={'blue.400'} fontWeight={'500'} fontSize={'12px'} pt={'15px'} cursor={'pointer'}>
-                            RESEND
-                          </Text>
-                        </HStack>
-                  </VStack>
-                    
-                  </ModalBody>
-                  <Button colorScheme='blue' m={5} onClick={() => {
-                      onClose();
-                      if (pin.first == 1 && pin.sec == 2 && pin.third == 3 && pin.fourth == 4) {
-                       alert('success')
-                      } else {
-                        toast({
-                          description: "Payment failed",
-                          status: 'error',
-                          position: 'top',
-                          duration: 3000,
-                          isClosable: true,
-                        });
-                      }
-                    }}>
-                      Enter OTP
-                    </Button>
-                  </ModalContent>
-                </ModalOverlay>
-
+                          }
+                        }}
+                      >
+                        Enter OTP
+                      </Button>
+                    </ModalContent>
+                  </ModalOverlay>
                 </Modal>
               </Box>
             </Box>
@@ -1024,63 +1095,70 @@ function Payment() {
           </Box>
 
           <Box w={"31%"} display={{ base: "none", md: "none", lg: "block" }}>
-  <Box
-    display={{ base: "none", md: "none", lg: "block" }}
-    p={"20px"}
-    borderRadius={"15px"}
-    bg={"white"}
-    boxShadow={"md"}
-    lineHeight={"25px"}
-  >
-    <Text pb={"15px"} fontSize={"20px"} fontWeight={"700"} align={'left'}>
-      Your Adventure Details
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      Location
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-      Explore the beautiful destination of {data.destination_title}, {data.location}, known for its {data.grade} experiences.
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      Duration
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-      6 days
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      Starts On
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-     Tuesday, 12 Sep 2023
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      Ends On
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-      Monday, 18 Sep 2023
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      Trip Type
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-      Group Tour
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      Language
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-      English
-    </Text>
-    <Text fontSize={"15px"} fontWeight={"600"} align={'left'}>
-      What's Included
-    </Text>
-    <Text pb={"10px"} fontSize={"15px"} align={'left'}>
-      Enjoy a worry-free journey with comfortable accommodation, expert local guides, delicious authentic meals, and convenient transportation.
-    </Text>
-  </Box>
-  <Price inc={inc} data={data}/>
-</Box>
-
+            <Box
+              display={{ base: "none", md: "none", lg: "block" }}
+              p={"20px"}
+              borderRadius={"15px"}
+              bg={"white"}
+              boxShadow={"md"}
+              lineHeight={"25px"}
+            >
+              <Text
+                pb={"15px"}
+                fontSize={"20px"}
+                fontWeight={"700"}
+                align={"left"}
+              >
+                Your Adventure Details
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                Location
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                Explore the beautiful destination of {data.destination_title},{" "}
+                {data.location}, known for its {data.grade} experiences.
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                Duration
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                6 days
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                Starts On
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                Tuesday, 12 Sep 2023
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                Ends On
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                Monday, 18 Sep 2023
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                Trip Type
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                Group Tour
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                Language
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                English
+              </Text>
+              <Text fontSize={"15px"} fontWeight={"600"} align={"left"}>
+                What's Included
+              </Text>
+              <Text pb={"10px"} fontSize={"15px"} align={"left"}>
+                Enjoy a worry-free journey with comfortable accommodation,
+                expert local guides, delicious authentic meals, and convenient
+                transportation.
+              </Text>
+            </Box>
+            <Price inc={inc} data={data} />
+          </Box>
         </Flex>
       </Box>
     </Box>
