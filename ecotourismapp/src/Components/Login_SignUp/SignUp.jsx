@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import video from '..video/video/webm'
+import video from '../../video/video.mp4'
 import { Box,Center,FormControl,FormLabel,Input,Text,Container,Link,VStack,Button,Stack,InputRightElement,InputGroup,useToast,Alert,AlertDescription,AlertIcon,AlertTitle,Checkbox} from '@chakra-ui/react'
-import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {BsEyeSlashFill,BsEyeFill} from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom';
 
