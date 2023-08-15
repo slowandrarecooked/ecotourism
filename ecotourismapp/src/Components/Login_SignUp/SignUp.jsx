@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import video from '../video/IncredibleIndia.webm'
+import video from '..video/video/webm'
 import { Box,Center,FormControl,FormLabel,Input,Text,Container,Link,VStack,Button,Stack,InputRightElement,InputGroup,useToast,Alert,AlertDescription,AlertIcon,AlertTitle,Checkbox} from '@chakra-ui/react'
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {BsEyeSlashFill,BsEyeFill} from 'react-icons/bs'
@@ -139,20 +139,19 @@ const Signup = () => {
  
     
   return (
-    <Box>
-    <video autoPlay loop muted>
-       <source src={video} type='video/mp4'/>
-      </video>
+    <Box className='container'  width={"100%"}>
+   <video autoPlay loop muted src={video}>
+   </video>
    <Container pt={"100px"}>
-   <Box bg={"blackAlpha.700"} p={"10"} border={"2px solid whiteAlpha.700"} borderRadius={"10px"} w={"600px"} >
+   <Box bg={"blackAlpha.700"}  borderRadius={"10px"}  className='inputContainer' >
    <Text fontSize={"2xl"} color={"white"} align={"center"}>Sign Up</Text>
    <Text fontSize={"md"} color={"white"} align={"center"} pb={"4"}>Already have an Account ?<Link color={"teal.500"} href='/signin'> Sign in</Link></Text>
   <form onSubmit={handleSubmit}>
   <VStack align={"stretch"} spacing={"2"} pb={"4"}>
    <FormControl >
-   <Input type='text' placeholder={'Username'} variant={"flushed"} color={"whiteAlpha.700"} focusBorderColor='teal.400' value={username} onChange={(e)=>setUserName(e.target.value)}/>
+   <Input type='text' placeholder={'Username'} autoComplete='off' variant={"flushed"} color={"whiteAlpha.700"} focusBorderColor='teal.400' value={username} onChange={(e)=>setUserName(e.target.value)}/>
    </FormControl>
-   <Input type='email'  placeholder={'Email'} variant={"flushed"}  color={"whiteAlpha.700"} focusBorderColor='teal.400' value={email}  onChange={(e)=>setEmail(e.target.value)}/>
+   <Input type='email'  placeholder={'Email'} autoComplete='off' variant={"flushed"}   color={"whiteAlpha.700"} focusBorderColor='teal.400' value={email}  onChange={(e)=>setEmail(e.target.value)}/>
    <InputGroup size='md'>
    <Input
      pr='4.5rem'

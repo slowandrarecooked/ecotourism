@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import video from '../video/IncredibleIndia.webm'
+import video from '../video/video.webm'
 import { Box,Center,FormControl,FormLabel,Input,Text,Container,Link,VStack,Button,Stack,InputRightElement,InputGroup,useToast,Alert,AlertDescription,AlertIcon,AlertTitle,Checkbox} from '@chakra-ui/react'
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {BsEyeSlashFill,BsEyeFill} from 'react-icons/bs'
@@ -101,17 +101,20 @@ const Signin = () => {
       }
     };
   return (
-    <Box>
-    <video autoPlay loop muted>
-       <source src={video} type='video/mp4'/>
+    <Box className='container'>
+    
+    
+    <video autoPlay loop muted src={video}>
       </video>
+  
+    
    <Container pt={"100px"}>
-   <Box bg={"blackAlpha.700"} p={"10"} border={"2px solid whiteAlpha.700"} borderRadius={"10px"} w={"600px"} >
+   <Box bg={"blackAlpha.700"} border={"2px solid whiteAlpha.700"} borderRadius={"10px"} className='inputContainer1' >
    <Text fontSize={"2xl"} color={"white"} align={"center"}>Sign In</Text>
    <Text fontSize={"md"} color={"white"} align={"center"} pb={"4"}>Dont Have Account ?<Link color={"teal.500"} href='/signup'> Sign up</Link></Text>
   <form onSubmit={handleSubmit}>
   <VStack align={"stretch"} spacing={"2"} pb={"4"}>
-   <Input type='email'  placeholder={'Email'} variant={"flushed"}  color={"whiteAlpha.700"} focusBorderColor='teal.400' value={email}  onChange={(e)=>setEmail(e.target.value)}/>
+   <Input type='email' autoComplete='off' placeholder={'Email'} variant={"flushed"}  color={"whiteAlpha.700"} focusBorderColor='teal.400' value={email}  onChange={(e)=>setEmail(e.target.value)}/>
    <InputGroup size='md'>
    <Input
      pr='4.5rem'
@@ -122,6 +125,7 @@ const Signin = () => {
      focusBorderColor='teal.400'
      value={password}
      onChange={(e)=>setpassWord(e.target.value)}
+     autoComplete='off'
      
    />
    <InputRightElement width='4.5rem'>
