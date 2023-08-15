@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import"./destinations.css";
+import "./destinations.css";
 import {
   Box,
   Button,
@@ -152,11 +152,9 @@ export const Destinations = () => {
           <Button
             onClick={() => {
               setPage(page + 1);
-              
+
               getData(loadUrl);
             }}
-
-
           >
             NextPage
           </Button>

@@ -51,7 +51,6 @@ const data = {
     "Narkanda is a tiny town in Shimla in the Indian hill state of Himachal Pradesh. Seated on the Hindustan-Tibet Road, Narkanda is encircled by the green cover of the Himalayas and hence, renowned for its apple orchards, treks and scenic beauty.",
 };
 
-
 function Payment() {
   const navigate = useNavigate();
   const [inc, setInc] = useState(1);
@@ -89,7 +88,7 @@ function Payment() {
 
   const getData = () => {
     console.log(traveler);
-    
+
     if (
       !traveler.first_Name ||
       !traveler.last_Name ||
@@ -319,7 +318,6 @@ function Payment() {
                     size={"lg"}
                     border={"1px solid silver"}
                     type="email"
-              
                   />
                 </VStack>
 
@@ -345,7 +343,6 @@ function Payment() {
                     border={"1px solid silver"}
                     type="tel"
                     placeholder="e.g. +91 9778556788"
-                    
                   />
                 </VStack>
 
@@ -1007,10 +1004,12 @@ function Payment() {
                             OTP Verification
                           </Text>
                           <Text fontSize={"15px"}>
-                          Thank you for choosing Adventour! Your adventure awaits.
+                            Thank you for choosing Adventour! Your adventure
+                            awaits.
                           </Text>
                           <Text fontSize={"15px"} pb={"20px"}>
-                          Please enter the One-Time Password (OTP) you received.
+                            Please enter the One-Time Password (OTP) you
+                            received.
                           </Text>
                           <HStack mt={3} mx={3}>
                             <PinInput>
@@ -1038,7 +1037,7 @@ function Payment() {
                           </HStack>
                           <HStack>
                             <Text fontSize={"12px"} pt={"15px"}>
-                            Haven't received the OTP yet? Click here to{" "}
+                              Haven't received the OTP yet? Click here to{" "}
                             </Text>
                             <Text
                               onClick={() => {
@@ -1072,7 +1071,7 @@ function Payment() {
                             pin.third == 6 &&
                             pin.fourth == 7
                           ) {
-                            // navigate('/success')
+                            navigate("/success");
                           } else {
                             toast({
                               description: "Payment failed",
