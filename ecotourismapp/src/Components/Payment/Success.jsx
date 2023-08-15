@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Button, Icon } from '@chakra-ui/react';
-import { FaCheckCircle } from 'react-icons/fa'; // Import the React Icons library
+import { FaCheckCircle } from 'react-icons/fa'; 
 import { motion } from 'framer-motion';
 
 const Success = () => {
@@ -47,7 +47,7 @@ const Success = () => {
             colorScheme="teal"
             size="md"
             onClick={() => {
-              // Implement your logic to navigate back to the home page here
+             
             }}
           >
             Back to Home
