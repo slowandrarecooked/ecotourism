@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@600&display=swap');
+body{
+    font-family: 'Urbanist', sans-serif;
+}
+.main{
+    display: flex;
+    background-image:  linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),url("https://i.ibb.co/sQtT543/Whats-App-Image-2023-08-13-at-6-34-27-PM.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.main>div{
+    width: 50%;
+}
+.mainImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.mainImage img{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width:500px;
+    height:350px;
+    border-radius:10px;
+
+}
+.mainDesc{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding:20px;
+
+    color: black;
+}
+.mainDesc button{
+    border: none;
+    background-color: #FACE55;
+    color: black;
+    font-family: 'Urbanist', sans-serif;
+    padding: 10px;
+    width: 100%;
+    font-size:large;
+    border-radius: 20px;
+}
+.mainDesc button:hover{
+    transition: border 0.5s ease-in-out;
+    cursor: pointer;
+    border: 1px solid white;
+
+}
+.thingstodo{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.thingstodo>div{
+    border: 1px solid white
+}
+@media only screen and (max-width: 1024px) {
+    .main{
+        flex-direction: column;
+
+    }
+    .main>div{
+        width: 100%;
+    }
+
+}
