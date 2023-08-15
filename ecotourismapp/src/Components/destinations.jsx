@@ -26,6 +26,7 @@ export const Destinations = () => {
   const [page, setPage] = useState(1);
   const Url = (Sort, RatingsFilter, Order, Ratings) => {
     let URL = `https://ecotourism-msze.onrender.com/destinations?_limit=12&_page=${page}`;
+    
     if (Sort && ratingsFilter) {
       return `${URL}&_grade=${ratings}&_sort=fees&_order=${Order}&grade=${ratings}`;
     } else if (Sort) {
