@@ -1,12 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import Navbar from "./Components/Navbar";
+import { AllRoutes } from "./Routes/AllRoutes";
+import { Footer } from "./Components/Footer";
+import { Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <h1>Ecotourism</h1>
+      <Navbar />
+      <AllRoutes />
+      <Footer />
     </div>
   );
 }
 
-export default App;
+export default App;
