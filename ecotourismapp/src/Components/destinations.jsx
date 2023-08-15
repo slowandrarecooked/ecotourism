@@ -25,7 +25,7 @@ export const Destinations = () => {
   const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
   const Url = (Sort, RatingsFilter, Order, Ratings) => {
-    let URL = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}`;
+    let URL = `https://ecotourism-msze.onrender.com/destinations?_limit=12&_page=${page}`;
     if (Sort && ratingsFilter) {
       return `${URL}&_grade=${ratings}&_sort=fees&_order=${Order}&grade=${ratings}`;
     } else if (Sort) {
@@ -90,7 +90,7 @@ export const Destinations = () => {
 
   const handleSearch = () => {
     console.log("clicked");
-    let Url = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}&q=${input}`;
+    let Url = `https://ecotourism-msze.onrender.com/destinations?_limit=12&_page=${page}&q=${input}`;
     getData(Url);
   };
 
