@@ -11,7 +11,8 @@ import {
 import axios, { Axios } from "axios";
 import { Search2Icon } from "@chakra-ui/icons";
 import { DestinationsCard } from "./DestinationsCard.jsx";
-import BgImg from "./photos/DreamShaper_v7_a_light_geen_background_for_a_travel_theme_cont_2.jpg";
+import { isDisabled } from "@testing-library/user-event/dist/utils/index.js";
+
 export const Destinations = () => {
   const bg__color = "green.100";
   const [data, setData] = useState([]);
@@ -20,9 +21,10 @@ export const Destinations = () => {
   const [order, setOrder] = useState("");
   const [ratingsFilter, setRatingsFilter] = useState(false);
   const [ratings, setRatings] = useState("");
-
+  const [input, setInput] = useState("");
+  const [page, setPage] = useState(1);
   const Url = (Sort, RatingsFilter, Order, Ratings) => {
-    let URL = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12`;
+    let URL = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}`;
     if (Sort && ratingsFilter) {
       return `${URL}&_grade=${ratings}&_sort=fees&_order=${Order}&grade=${ratings}`;
     } else if (Sort) {
@@ -31,7 +33,6 @@ export const Destinations = () => {
       }
       return `${URL}&_sort=fees&_order=${Order}`;
     } else if (RatingsFilter) {
-      
       return `${URL}&grade=${Ratings}`;
     }
 
@@ -47,6 +48,7 @@ export const Destinations = () => {
       let res = await axios.get(`${URL}`);
       //  console.log(res.data);
       setData(res.data);
+      // console.log(res.data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -73,18 +75,30 @@ export const Destinations = () => {
       setRatingsFilter(true);
     }
     setRatings(e.target.value);
-    let ratingsUrl = Url(sort, true, order,e.target.value);
-    console.log(e.target.value)
+    let ratingsUrl = Url(sort, true, order, e.target.value);
+    console.log(e.target.value);
     console.log(ratingsUrl);
     getData(ratingsUrl);
   };
   // console.log(loadUrl);
+
+  //handle Input
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleSearch = () => {
+    console.log("clicked");
+    let Url = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}&q=${input}`;
+    getData(Url);
+  };
+
   const res = useEffect(() => {
     getData(loadUrl);
   }, []);
 
   return (
-    <Box color={"white"} p={3} backgroundImage={BgImg}>
+    <Box color={"white"} p={3} className="background-image">
       <Heading gap={"3"} marginBottom={"2rem"} key={1}>
         {" "}
         Trending Destinatons
@@ -112,15 +126,38 @@ export const Destinations = () => {
           <option value="4">4</option>
           <option value="5">5</option>
         </Select>
-        <Input placeholder="search" />
+        <Input placeholder="search" onChange={handleInput} />
         <Button>
-          <Search2Icon />
+          <Search2Icon onClick={handleSearch} />
         </Button>
       </Box>
       <Flex wrap={"wrap"} justifyContent={"Center"} gap={3} key={2}>
         {data?.map((e) => {
           return <DestinationsCard key={e.id} prop={e} Loading={loading} />;
         })}
+      </Flex>
+      <Flex justifyContent={"center"}>
+        <Box>
+          <Button
+            onClick={() => {
+              setPage(page - 1);
+              getData(loadUrl);
+            }}
+            isDisabled={page - 1 <= 0}
+          >
+            PrevPage
+          </Button>
+          <Button m={"2"}>{page}</Button>
+          <Button
+            onClick={() => {
+              setPage(page + 1);
+              
+              getData(loadUrl);
+            }}
+          >
+            NextPage
+          </Button>
+        </Box>
       </Flex>
     </Box>
   );
