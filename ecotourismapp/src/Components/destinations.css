@@ -1,0 +1,37 @@
+.chakra-image:hover {
+    transform: scale(1.05);
+  }
+  .content-box {
+    max-height: 70px; /* Set the desired height before truncating */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .css-6xkcp2{
+    min-height: 100vh;
+    
+  }
+  .background-image {
+    
+    width: 100vw; /* 100% of viewport width */
+    min-height: 100vh; /* 100% of viewport height */
+    background: url('../Components/photos/DreamShaper_v7_a_light_geen_background_for_a_travel_theme_cont_2.jpg') no-repeat center center / cover;
+    z-index: -1; /* Place the background image behind other content */
+  }
+  .css-ga121 img {
+    max-width: 100%;
+    overflow: hidden;
+    
+  }
+  @media (max-width: 423px) {
+    .css-ga121 img {
+      width: 70%; /* Adjust the width as needed */
+      position: absolute;
+     margin-left : 0.1rem;
+    }
+    
+    .chakra-card {
+      width: 80%;
+      
+    }
+  }

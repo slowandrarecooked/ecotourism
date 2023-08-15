@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import"./destinations.css";
 import {
   Box,
   Button,
@@ -154,6 +155,8 @@ export const Destinations = () => {
               
               getData(loadUrl);
             }}
+
+
           >
             NextPage
           </Button>
