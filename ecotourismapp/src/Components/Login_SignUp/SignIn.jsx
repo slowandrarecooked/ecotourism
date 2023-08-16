@@ -116,7 +116,7 @@ const Signin = () => {
       login();
     }
   };
-  if (auth) return <Navigate to="/home" />;
+  if (auth) return <Navigate to="/" />;
   return (
     <Box className="container">
       <video autoPlay loop muted src={video}></video>

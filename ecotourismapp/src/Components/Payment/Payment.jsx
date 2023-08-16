@@ -1986,7 +1986,7 @@ function Payment() {
                   onClick={getData}
                   w={"100%"}
                   colorScheme="none"
-                  bg={"black"}
+                  bg={"teal"}
                   py={"30px"}
                   mt={"30px"}
                   isDisabled={!check}

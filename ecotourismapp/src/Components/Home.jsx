@@ -8,7 +8,6 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -16,20 +15,23 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { Cards } from "./Card";
 import "./Home.css";
+import video from '../video/homepagevideo.mp4'
 const Home = () => {
   return (
     <div
-      style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1552845108-5f775a2ccb9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80)",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        minHeight: "100vh",
-        justifyContent: "center",
-      }}
+      // style={{
+      //   // backgroundImage:
+      //   //   "url(https://images.unsplash.com/photo-1552845108-5f775a2ccb9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80)",
+      //   backgroundPosition: "center",
+      //   backgroundSize: "cover",
+      //   minHeight: "100vh",
+      //   justifyContent: "center",
+      // }}
     >
+    <video src={video} autoPlay loop muted style={{marginTop:"-67px"}}></video>
       <Box mt={16} ml={30} pt={50}>
         <Text
           fontSize="3xl"

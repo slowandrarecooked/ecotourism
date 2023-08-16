@@ -10,13 +10,14 @@ import {
   Input,
   IconButton,
   useColorModeValue,
+  background,
 } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 import { ReactNode, useState } from "react";
-// import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-// import { BiMailSend } from "react-icons/bi";
-// import { SiGoogleearth } from "react-icons/si";
-// import { AiTwotoneMail } from "react-icons/ai";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { BiMailSend } from "react-icons/bi";
+import { SiGoogleearth } from "react-icons/si";
+import { AiTwotoneMail } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
 import { Link as Rlink } from "react-router-dom";
 import "./Footer1.css";
@@ -130,15 +131,15 @@ export default function Footer() {
             </Text>
             <Text fontSize={"sm"}>© 2023 Ecotourism. All rights reserved</Text>
             <Stack direction={"row"} spacing={6}>
-              <SocialButton label={"Twitter"} href={"#"}>
-                {/* <FaTwitter /> */}
-              </SocialButton>
-              <SocialButton label={"YouTube"} href={"#"}>
-                {/* <FaYoutube /> */}
-              </SocialButton>
-              <SocialButton label={"Instagram"} href={"#"}>
-                {/* <FaInstagram /> */}
-              </SocialButton>
+            
+               <FaTwitter style={{color:'teal'}}/> 
+             
+             
+                 <FaYoutube style={{color:'teal'}}/>
+            
+           
+                <FaInstagram style={{color:'teal'}}/>
+              
             </Stack>
           </Stack>
           <Stack align={"flex-start"}>

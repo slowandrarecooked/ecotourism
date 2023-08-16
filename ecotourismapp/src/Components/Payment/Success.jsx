@@ -44,7 +44,7 @@ const Success = () => {
             unforgettable adventure!
           </Text>
           <Button mt={6} colorScheme="teal" size="md" onClick={() => {}}>
-            <Link to="/home">Back to Home</Link>
+            <Link to="/">Back to Home</Link>
           </Button>
         </Box>
       </motion.div>
