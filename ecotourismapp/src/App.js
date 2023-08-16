@@ -9,9 +9,9 @@ import { AuthContext } from "./Routes/PrivateRoute";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+     
       <AllRoutes />
-      <Footer1 />
+      
     </div>
   );
 }

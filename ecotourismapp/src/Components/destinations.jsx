@@ -14,6 +14,8 @@ import axios, { Axios } from "axios";
 import { Search2Icon } from "@chakra-ui/icons";
 import { DestinationsCard } from "./DestinationsCard.jsx";
 import { isDisabled } from "@testing-library/user-event/dist/utils/index.js";
+import Footer from "./Footer1";
+import Navbar from "./Navbar";
 
 export const Destinations = () => {
   const bg__color = "green.100";
@@ -26,7 +28,7 @@ export const Destinations = () => {
   const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
   const Url = (Sort, RatingsFilter, Order, Ratings) => {
-  let URL = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}`;
+  let URL = `https://ecotourism-msze.onrender.com/destinations?_limit=12&_page=${page}`;
     
     if (Sort && ratingsFilter) {
       return `${URL}&_grade=${ratings}&_sort=fees&_order=${Order}&grade=${ratings}`;
@@ -92,7 +94,7 @@ export const Destinations = () => {
 
   const handleSearch = () => {
     console.log("clicked");
-    let Url = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}&q=${input}`;
+    let Url = `https://ecotourism-msze.onrender.com/destinations?_limit=12&_page=${page}&q=${input}`;
     getData(Url);
   };
 
@@ -101,6 +103,8 @@ export const Destinations = () => {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <Box color={"white"} p={3} className="background-image">
       <Heading gap={"3"} marginBottom={"2rem"} key={1}>
         {" "}
@@ -118,7 +122,7 @@ export const Destinations = () => {
         </Select>
 
         <Select
-          placeholder="Sort By Ratings"
+          placeholder="Filter By Ratings"
           width={"300px"}
           textColor={"black"}
           onChange={(e) => handleRating(e)}
@@ -163,5 +167,7 @@ export const Destinations = () => {
         </Box>
       </Flex>
     </Box>
+    <Footer/>
+    </>
   );
 };

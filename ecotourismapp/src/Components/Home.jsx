@@ -19,6 +19,8 @@ import { Link } from "react-router-dom";
 import { Cards } from "./Card";
 import "./Home.css";
 import video from '../video/homepagevideo.mp4'
+import Navbar from "./Navbar";
+import Footer from "./Footer1";
 const Home = () => {
   return (
     <div
@@ -31,6 +33,7 @@ const Home = () => {
       //   justifyContent: "center",
       // }}
     >
+    <Navbar/>
     <video src={video} autoPlay loop muted style={{marginTop:"-67px"}}></video>
       <Box mt={16} ml={30} pt={50}>
         <Text
@@ -86,6 +89,7 @@ const Home = () => {
           <Link to="/destination">Start Exploring</Link>
         </Button>
       </Box>
+      <Footer/>
     </div>
   );
 };

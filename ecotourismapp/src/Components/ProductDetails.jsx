@@ -2,6 +2,8 @@ import { json, useParams } from "react-router-dom";
 import "../Styles/ProductDetails.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer1";
 export const ProductDetails = () => {
   const { id } = useParams();
   const destinations = [
@@ -3537,7 +3539,10 @@ export const ProductDetails = () => {
   });
   let activites = target.activities;
   return (
+    <>
+     <Navbar/>
     <div className="main">
+   
       <div className="mainImage">
         <img src={data.image_url} alt="" />
       </div>
@@ -3569,5 +3574,7 @@ export const ProductDetails = () => {
         </button>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };

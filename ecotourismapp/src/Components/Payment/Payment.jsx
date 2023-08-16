@@ -39,6 +39,8 @@ import {
 import { GrFormSubtract, GrFormAdd, GrRadialSelected } from "react-icons/gr";
 import Price from "../Price";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import Navbar from "../Navbar";
+import Footer from "../Footer1";
 
 // const data = {
 //   id: 1,
@@ -1123,6 +1125,9 @@ function Payment() {
   };
 
   return (
+    <>
+    <Navbar/>
+   
     <Box minH={"100vh"} bg={"gray.100"} color={"blackAlpha.800"}>
       <Box w={{ base: "92%", md: "95%", lg: "76%" }} m={"auto"}>
         <Flex py={"30px"}>
@@ -1737,7 +1742,7 @@ function Payment() {
                   fontSize={"20px"}
                   px={"10px"}
                 >
-                  Adventour Savings
+                 Savings
                 </Text>
               </HStack>
               <Text
@@ -2159,6 +2164,8 @@ function Payment() {
         </Flex>
       </Box>
     </Box>
+    <Footer/>
+    </>
   );
 }
 
