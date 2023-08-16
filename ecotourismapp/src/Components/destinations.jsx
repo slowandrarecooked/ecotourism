@@ -26,7 +26,8 @@ export const Destinations = () => {
   const [input, setInput] = useState("");
   const [page, setPage] = useState(1);
   const Url = (Sort, RatingsFilter, Order, Ratings) => {
-    let URL = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}`;
+  let URL = `http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/destinations?_limit=12&_page=${page}`;
+    
     if (Sort && ratingsFilter) {
       return `${URL}&_grade=${ratings}&_sort=fees&_order=${Order}&grade=${ratings}`;
     } else if (Sort) {
