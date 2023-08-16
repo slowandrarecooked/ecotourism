@@ -12,8 +12,9 @@ import {
   useColorModeValue,
   background,
 } from "@chakra-ui/react";
+import React from "react";
 import { EmailIcon } from "@chakra-ui/icons";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import { SiGoogleearth } from "react-icons/si";
@@ -42,7 +43,7 @@ import "./Footer1.css";
 
 const SocialButton = (
   { children, label, href } = {
-    children: ReactNode,
+    children: "",
     label: "",
     href: "",
   }
@@ -70,7 +71,7 @@ const SocialButton = (
   );
 };
 
-const ListHeader = ({ children } = { children: ReactNode }) => {
+const ListHeader = ({ children } = { children: "" }) => {
   return (
     <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
       {children}
