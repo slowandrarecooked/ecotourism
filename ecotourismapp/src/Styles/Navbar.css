@@ -6,7 +6,9 @@
 	box-sizing: border-box;
 	font-family: "Titillium Web", sans-serif;
 }
-
+img{
+	height: 70px;
+}
 :root {
 	--mainColor: #7DBBA9;
 	--mainColorLight: #5767aa;

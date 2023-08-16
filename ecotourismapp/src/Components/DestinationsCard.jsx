@@ -18,11 +18,14 @@ import {
   Card,
   Skeleton,
 } from "@chakra-ui/react";
-
+import { Link } from "react-router-dom";
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { ProductDetails } from "./ProductDetails";
 
 export const DestinationsCard = ({ prop, Loading }) => {
-  let { image_url, fees, grade, destination_title, location, description } =
+  console.log(prop);
+  let { id, image_url, fees, grade, destination_title, location, description } =
     prop;
   let Ratings = "";
 
@@ -86,13 +89,15 @@ export const DestinationsCard = ({ prop, Loading }) => {
           {star.map((e) => {
             if (e == 1) {
               return <StarIcon color={"yellow"}></StarIcon>;
-            }else{
-              return <StarIcon></StarIcon>
+            } else {
+              return <StarIcon></StarIcon>;
             }
           })}
         </Text>
         <CardFooter justifyContent={"space-around"}>
-          <Button colorScheme="yellow">Book Now</Button>
+          <Button colorScheme="yellow">
+            <Link to={`/destination/${id}`}>Book Now</Link>
+          </Button>
         </CardFooter>
       </CardBody>
     </Card>

@@ -17,7 +17,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Cards } from "./Card";
-
+import "./Home.css";
 const Home = () => {
   return (
     <div
@@ -81,7 +81,7 @@ const Home = () => {
           mb={400}
           ml={20}
         >
-          Start Exploring
+          <Link to="/destination">Start Exploring</Link>
         </Button>
       </Box>
     </div>

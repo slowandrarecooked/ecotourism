@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import "../Styles/ProductDetails.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 export const ProductDetails = () => {
   const { id } = useParams();
   const destinations = [
@@ -996,10 +997,14 @@ export const ProductDetails = () => {
       id: 100,
     },
   ];
+  const bookingData = destinations.filter((item) => {
+    return item.id == id;
+  });
+  const [{ fees, destination_title, location, grade }] = bookingData;
+  console.log(fees, destination_title, location, grade);
   const [data] = destinations.filter((item) => {
     return item.id == id;
   });
-  console.log(data);
   const destinationDetails = [
     {
       name: "Paris, France",
@@ -3531,20 +3536,23 @@ export const ProductDetails = () => {
     return item.id == id;
   });
   let activites = target.activities;
-  console.log(activites);
   return (
     <div className="main">
       <div className="mainImage">
         <img src={data.image_url} alt="" />
       </div>
       <div className="mainDesc">
-        <h1>{data.destination_title}</h1>
+        <h1 style={{ fontWeight: "bolder", fontSize: "x-large" }}>
+          {data.destination_title.toLocaleUpperCase()}
+        </h1>
 
-        <h3>DESCRIPTION</h3>
+        <h3 style={{ fontWeight: "bold" }}>DESCRIPTION</h3>
         <hr />
         <p>{data.description}</p>
 
-        <h3>THINGS TO DO IN {data.destination_title}</h3>
+        <h3 style={{ fontWeight: "bold" }}>
+          THINGS TO DO IN {data.destination_title}
+        </h3>
         <hr />
         <div className="thingstodo">
           {activites.map((item) => (
@@ -3555,9 +3563,11 @@ export const ProductDetails = () => {
           ))}
         </div>
 
-        <h2>${data.fees}</h2>
-        <button>Book my trip</button>
+        <h1 style={{ fontWeight: "bold" }}>${data.fees}</h1>
+        <button>
+          <Link to={`/payment/${id}`}>Book my trip</Link>
+        </button>
       </div>
     </div>
   );
-  }
+};

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, Button, Icon } from '@chakra-ui/react';
-import { FaCheckCircle } from 'react-icons/fa'; 
-import { motion } from 'framer-motion';
-
+import React, { useEffect, useState } from "react";
+import { Box, Heading, Text, Button, Icon } from "@chakra-ui/react";
+import { FaCheckCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 const Success = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
 
@@ -26,7 +26,7 @@ const Success = () => {
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={animationComplete ? { scale: 1, opacity: 1 } : {}}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <Box
           p="20px"
@@ -40,17 +40,11 @@ const Success = () => {
             Payment Successful!
           </Heading>
           <Text fontSize="md">
-          Your payment has been processed successfully. Get ready for an unforgettable adventure!
+            Your payment has been processed successfully. Get ready for an
+            unforgettable adventure!
           </Text>
-          <Button
-            mt={6}
-            colorScheme="teal"
-            size="md"
-            onClick={() => {
-             
-            }}
-          >
-            Back to Home
+          <Button mt={6} colorScheme="teal" size="md" onClick={() => {}}>
+            <Link to="/home">Back to Home</Link>
           </Button>
         </Box>
       </motion.div>

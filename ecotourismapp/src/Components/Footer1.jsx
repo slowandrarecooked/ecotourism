@@ -11,6 +11,7 @@ import {
   IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
 import { ReactNode, useState } from "react";
 // import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 // import { BiMailSend } from "react-icons/bi";
@@ -18,7 +19,7 @@ import { ReactNode, useState } from "react";
 // import { AiTwotoneMail } from "react-icons/ai";
 import { useToast } from "@chakra-ui/react";
 import { Link as Rlink } from "react-router-dom";
-
+import "./Footer1.css";
 //   const Logo = (props: any) => {
 //     return (
 //       <svg
@@ -41,8 +42,8 @@ import { Link as Rlink } from "react-router-dom";
 const SocialButton = (
   { children, label, href } = {
     children: ReactNode,
-    label: '',
-    href: '',
+    label: "",
+    href: "",
   }
 ) => {
   return (
@@ -184,7 +185,7 @@ export default function Footer() {
                   bg: "green.600",
                 }}
                 aria-label="Subscribe"
-                // icon={<BiMailSend />}
+                icon={<EmailIcon />}
               />
             </Stack>
           </Stack>

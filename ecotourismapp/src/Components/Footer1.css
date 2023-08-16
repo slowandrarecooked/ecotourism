@@ -1,0 +1,7 @@
+@media only screen and (max-width: 1024px) {
+    .css-p9pngt{
+      display:grid;
+      grid-template-columns:1fr !important;
+
+    }
+  }
