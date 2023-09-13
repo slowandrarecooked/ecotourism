@@ -18,14 +18,11 @@ import {
   Card,
   Skeleton,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+
 import React from "react";
-import { Navigate } from "react-router-dom";
-import { ProductDetails } from "./ProductDetails";
 
 export const DestinationsCard = ({ prop, Loading }) => {
-  console.log(prop);
-  let { id, image_url, fees, grade, destination_title, location, description } =
+  let { image_url, fees, grade, destination_title, location, description } =
     prop;
   let Ratings = "";
 
@@ -42,15 +39,16 @@ export const DestinationsCard = ({ prop, Loading }) => {
     <Card maxW="sm" m={2} bg={"green.50"} boxShadow="xl" height={"500px"}>
       <CardBody>
         <Box height={"150px"} width={"350px"} position={"relative"}>
-          <center position="absolute" top={0} left={0}>
+          <center position="absolute" top={0} left={0} h='150px' w='350px' >
             {image_url ? (
               <Image
                 src={image_url}
-                boxSize="350px 200px "
+                boxSize="350px 200px"
                 borderRadius="xl"
                 objectFit="cover"
                 opacity="1"
                 zIndex={2}
+                minH={'150px'}
                 backgroundColor={"black"}
               />
             ) : (
@@ -89,15 +87,13 @@ export const DestinationsCard = ({ prop, Loading }) => {
           {star.map((e) => {
             if (e == 1) {
               return <StarIcon color={"yellow"}></StarIcon>;
-            } else {
-              return <StarIcon></StarIcon>;
+            }else{
+              return <StarIcon></StarIcon>
             }
           })}
         </Text>
         <CardFooter justifyContent={"space-around"}>
-          <Button colorScheme="yellow">
-            <Link to={`/destination/${id}`}>Book Now</Link>
-          </Button>
+          <Button colorScheme="yellow">Book Now</Button>
         </CardFooter>
       </CardBody>
     </Card>
